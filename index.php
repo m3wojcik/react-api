@@ -67,4 +67,25 @@ switch ($_GET["q"]) {
           {"groupId": 1, "groupName": "Angielski 3/2016", "marks": [{ "name": "test", "value": "60/100", "date": "2016-12-23 18:00:00" }, { "name": "Speaking", "value": "80/100", "date": "2016-12-20 18:00:00" }], "percent": 73 }
         ]';
     break;
+    case "getAttendance":
+        echo '[
+          {"groupId": 1, "groupName": "Angielski 3/2016", "attendance": "93", "statuses": [{ "name": "Nieobecność", "color": "#fc5c50", "date": "2016-12-13 18:00:00", "function": "absent" }, { "name": "Spoznienie", "color": "#ffb629", "date": "2016-12-23 18:00:00", "function": "present" }]}
+        ]';
+    break;
+    case "getInboxMessages":
+        echo '[
+          {"id": 1, "read": true, "topic": "Witaj w naszej szkole!", "sender": "Langlion System","date": "2016-12-23 18:00:00"},
+          {"id": 2, "read": false, "topic": "Witaj w naszej szkole!", "sender": "Langlion System","date": "2016-12-25 18:00:00"}
+        ]';
+    break;
+    case "getMessage":
+        echo '{
+          "id": 1,
+          "read": true,
+          "topic": "Witaj w naszej szkole!",
+          "sender": "Langlion System",
+          "message":"<p>Dzień dobry,</p><p>Bardzo się cieszę, że rozpocząłeś naukę w Demonstracyjnej Szkole Językowej. Mam nadzieję, że czas spędzony u nas, będzie pełen pozytywnych emocji i dużej dawki języków obcych.</p><p>Pozdrawiam serdecznie,</p><p>Dyrektor Szkoły</p><p>Michał Nowak</p>",
+          "date": "2016-12-23 18:00:00"
+        }';
+    break;
 }
