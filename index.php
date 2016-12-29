@@ -88,4 +88,15 @@ switch ($_GET["q"]) {
           "date": "2016-12-23 18:00:00"
         }';
     break;
+    case "getAddressBook":
+        echo '{
+          "1": { "name": "Lektorski Jan", "id":1, "isSelected": false },
+          "2": { "name": "Smith James", "id": 2, "isSelected": false },
+          "3": { "name": "Kowalczyk Albin", "id": 3, "isSelected": false},
+          "4": { "name": "Zieliński Albrecht", "id": 4, "isSelected": false},
+          "5": { "name": "Szymański Aldon", "id": 5, "isSelected": false},
+          "8": { "name": "Kozłowski Aleks", "id": 8, "isSelected": false},
+          "7": { "name": "Wróbel Anna", "id": 7, "isSelected": false}
+        }';
+    break;
 }
