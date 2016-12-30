@@ -74,15 +74,16 @@ switch ($_GET["q"]) {
     break;
     case "getInboxMessages":
         echo '[
-          {"id": 1, "read": true, "topic": "Witaj w naszej szkole!", "sender": "Langlion System","date": "2016-12-23 18:00:00"},
-          {"id": 2, "read": false, "topic": "Witaj w naszej szkole!", "sender": "Langlion System","date": "2016-12-25 18:00:00"}
+          {"id": 1, "read": true, "topic": "Witaj w naszej szkole!", "senderId": 2, "sender": "Langlion System","date": "2016-12-23 18:00:00"},
+          {"id": 2, "read": false, "topic": "Witaj w naszej szkole!","senderId": 3, "sender": "Langlion System","date": "2016-12-25 18:00:00"}
         ]';
     break;
     case "getMessage":
         echo '{
           "id": 1,
           "read": true,
-          "topic": "Witaj w naszej szkole!",
+          "subject": "Witaj w naszej szkole!",
+          "senderId": 2,
           "sender": "Langlion System",
           "message":"<p>Dzień dobry,</p><p>Bardzo się cieszę, że rozpocząłeś naukę w Demonstracyjnej Szkole Językowej. Mam nadzieję, że czas spędzony u nas, będzie pełen pozytywnych emocji i dużej dawki języków obcych.</p><p>Pozdrawiam serdecznie,</p><p>Dyrektor Szkoły</p><p>Michał Nowak</p>",
           "date": "2016-12-23 18:00:00"
