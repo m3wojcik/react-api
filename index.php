@@ -2,6 +2,12 @@
 header("Access-Control-Allow-Origin: *");
 sleep(1);
 switch ($_GET["q"]) {
+  case "getAppData":
+      echo '{
+          "user": {"firstName": "Jan", "lastName": "Muszynski"},
+          "notifications": {"unreadMessages": 1}
+        }';
+  break;
     case "getTableData":
         echo '[
           {"category": "Sporting Goods", "price": "$49.99", "stocked": true, "name": "Football"},
@@ -74,8 +80,8 @@ switch ($_GET["q"]) {
     break;
     case "getInboxMessages":
         echo '[
-          {"id": 1, "read": true, "topic": "Witaj w naszej szkole!", "senderId": 2, "sender": "Langlion System","date": "2016-12-23 18:00:00"},
-          {"id": 2, "read": false, "topic": "Witaj w naszej szkole!","senderId": 3, "sender": "Langlion System","date": "2016-12-25 18:00:00"}
+          {"id": 1, "read": true, "subject": "Witaj w naszej szkole!", "senderId": 2, "sender": "Langlion System","date": "2017-01-03 11:00:00"},
+          {"id": 2, "read": false, "subject": "Witaj w naszej szkole!","senderId": 3, "sender": "Langlion System","date": "2016-12-25 18:00:00"}
         ]';
     break;
     case "getMessage":
@@ -100,4 +106,24 @@ switch ($_GET["q"]) {
           "7": { "name": "Wróbel Anna", "id": 7, "isSelected": false}
         }';
     break;
+    case "getFiles":
+      if(!isset($_GET["id"]) || $_GET["id"] == 0){
+          echo '{
+            "path":[{"id":0,"name": "folder 0"}],
+            "files":[{"id":1, "name":"folder 1", "type":"folder"},{"id":9, "name":"wakacje", "type":"file", "extension":"jpg", "size": "300KB" },{"id":10, "name":"grafik", "type":"file", "extension":"pdf", "size": "450KB"}]
+          }';
+      }elseif($_GET["id"] == 1){
+        echo '{
+          "path":[{"id":0,"name": "folder 0"}, {"id":1,"name": "folder 1"}],
+          "files":[{"id":2, "name":"folder 2", "type":"folder"}]
+        }';
+      }elseif($_GET["id"] == 2){
+        echo '{
+          "path":[{"id":0,"name": "folder 0"}, {"id":1,"name": "folder 1"}, {"id":2,"name": "folder 2"}],
+          "files":[]
+        }';
+      }
+
+    break;
+
 }
