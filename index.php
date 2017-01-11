@@ -123,7 +123,40 @@ switch ($_GET["q"]) {
           "files":[]
         }';
       }
-
+    break;
+    case "getTests":
+        echo '[
+          {"id": 1, "language": "English", "name": "Placement test", "sharedBy": "Lektorski Jan", "shareDate": "2016-12-23 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": "60", "result": null, "completed": false, "rated": false, "multipleSolving": true},
+          {"id": 2, "language": "English", "name": "Grammar", "sharedBy": "Lektorski Jan", "shareDate": "2017-01-08 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": null, "result": 80, "completed": true, "rated": true, "multipleSolving": true}
+        ]';
+    break;
+    case "getTest":
+        echo '{
+            "id": 1,
+            "language": "English",
+            "name": "Placement test",
+            "sharedBy": "Lektorski Jan",
+            "shareDate": "2016-12-23 18:00:00",
+            "checkingTeacher": "Lektorski Jan",
+            "duration": "60",
+            "result": null,
+            "completed": false,
+            "rated": false,
+            "multipleSolving": true,
+            "testData": {
+              "pages": [
+                {"blocks":[
+                  {"id": 10, "type": "block-of-text", "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
+                  {"id": 11, "type": "single", "question": "Did you ... anywhere interesting last weekend?", "answers": [{"id": 110, "label":"go", "value": "110"}, {"id": 111, "label":"going", "value": "111"}, {"id": 112, "label":"was", "value": "112"}]},
+                  {"id": 12, "type": "multiple", "question": "I think ... taxi driver.", "answers": [{"id": 120, "label":"she is a", "value": "1"}, {"id": 121, "label":"her job is a", "value": "2"}, {"id": 122, "label":"she is", "value": "3"}]},
+                  {"id": 13, "type": "open","maxPoints": 10, "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
+                  {"id": 14, "type": "fill-gaps", "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap"},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap"}]},
+                  {"id": 15, "type": "fill-gaps-list", "answers":["zdrowie", "krewny"], "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap"},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap"}]},
+                  {"id": 16, "type": "fill-gaps-predefined", "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap", "answers":["zdrowie", "choroba"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap", "answers":["krewny", "krewna","obcy"]}]}
+                  ]}
+              ]
+            }
+          }';
     break;
 
 }
