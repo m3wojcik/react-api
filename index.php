@@ -4,9 +4,19 @@ sleep(1);
 switch ($_GET["q"]) {
   case "getAppData":
       echo '{
-          "user": {"firstName": "Jan", "lastName": "Muszynski"},
-          "notifications": {"unreadMessages": 1}
+          "user": {"login": "jkowalski", "firstName": "Jan", "lastName": "Muszynski", "avatar": "https://unsplash.it/48/48?random&time=1484309785649"},
+          "notifications": {"unreadMessages": 1, "newTest": 1, "newFiles": 1}
         }';
+  break;
+  case "getUserData":
+      echo '{
+        "login": "jkowalski",
+        "firstName": "Jan",
+        "lastName": "Muszynski",
+        "phone": "799 010 339",
+        "email": "jan@wp.pl",
+        "avatar": "https://unsplash.it/192/192?random&time=1484309785649"
+      }';
   break;
     case "getTableData":
         echo '[
@@ -81,7 +91,7 @@ switch ($_GET["q"]) {
     case "getInboxMessages":
         echo '[
           {"id": 1, "read": true, "subject": "Witaj w naszej szkole!", "senderId": 2, "sender": "Langlion System","date": "2017-01-03 11:00:00"},
-          {"id": 2, "read": false, "subject": "Witaj w naszej szkole!","senderId": 3, "sender": "Langlion System","date": "2016-12-25 18:00:00"}
+          {"id": 2, "read": false, "subject": "Naganne zachowanie","senderId": 3, "sender": "Bario Malotelli","date": "2016-12-25 18:00:00"}
         ]';
     break;
     case "getMessage":
@@ -110,7 +120,7 @@ switch ($_GET["q"]) {
       if(!isset($_GET["id"]) || $_GET["id"] == 0){
           echo '{
             "path":[{"id":0,"name": "folder 0"}],
-            "files":[{"id":1, "name":"folder 1", "type":"folder"},{"id":9, "name":"wakacje", "type":"file", "extension":"jpg", "size": "300KB" },{"id":10, "name":"grafik", "type":"file", "extension":"pdf", "size": "450KB"}]
+            "files":[{"id":1, "name":"folder 1", "type":"folder"},{"id":9, "name":"wakacje", "type":"file", "extension":"jpg", "size": "300KB" },{"id":10, "name":"grafik", "type":"file", "extension":"pdf", "size": "450KB"},{"id":11, "name":"grafik", "type":"file", "extension":"doc", "size": "450KB"},{"id":12, "name":"grafik", "type":"file", "extension":"docx", "size": "450KB"},{"id":13, "name":"grafik", "type":"file", "extension":"xls", "size": "450KB"},{"id":14, "name":"grafik", "type":"file", "extension":"ppt", "size": "450KB"}]
           }';
       }elseif($_GET["id"] == 1){
         echo '{
@@ -138,7 +148,8 @@ switch ($_GET["q"]) {
             "sharedBy": "Lektorski Jan",
             "shareDate": "2016-12-23 18:00:00",
             "checkingTeacher": "Lektorski Jan",
-            "duration": "60",
+            "duration": 3600,
+            "timeLeft": 15,
             "result": null,
             "completed": false,
             "rated": false,
@@ -148,7 +159,7 @@ switch ($_GET["q"]) {
                 {"blocks":[
                   {"id": 10, "type": "block-of-text", "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
                   {"id": 11, "type": "single", "question": "Did you ... anywhere interesting last weekend?", "answers": [{"id": 110, "label":"go", "value": "110"}, {"id": 111, "label":"going", "value": "111"}, {"id": 112, "label":"was", "value": "112"}]},
-                  {"id": 12, "type": "multiple", "question": "I think ... taxi driver.", "answers": [{"id": 120, "label":"she is a", "value": "1"}, {"id": 121, "label":"her job is a", "value": "2"}, {"id": 122, "label":"she is", "value": "3"}]},
+                  {"id": 12, "type": "multiple", "question": "I think ... taxi driver.", "answers": [{"id": 120, "label":"she is a", "value": "120"}, {"id": 121, "label":"her job is a", "value": "121"}, {"id": 122, "label":"she is", "value": "122"}]},
                   {"id": 13, "type": "open","maxPoints": 10, "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
                   {"id": 14, "type": "fill-gaps", "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap"},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap"}]},
                   {"id": 15, "type": "fill-gaps-list", "answers":["zdrowie", "krewny"], "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap"},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap"}]},
@@ -157,6 +168,51 @@ switch ($_GET["q"]) {
               ]
             }
           }';
+    break;
+    case "viewTest":
+        echo '{
+            "id": 1,
+            "language": "English",
+            "name": "Placement test",
+            "sharedBy": "Lektorski Jan",
+            "shareDate": "2016-12-23 18:00:00",
+            "checkingTeacher": "Lektorski Jan",
+            "duration": null,
+            "result": 80,
+            "completed": false,
+            "rated": false,
+            "multipleSolving": true,
+            "testData": {
+              "pages": [
+                {"blocks":[
+                  {"id": 10, "type": "block-of-text", "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
+                  {"id": 11, "type": "single", "correct": true, "correctAnswer": "110", "userAnswer": "110", "question": "Did you ... anywhere interesting last weekend?", "answers": [{"id": 110, "label":"go", "value": "110"}, {"id": 111, "label":"going", "value": "111"}, {"id": 112, "label":"was", "value": "112"}]},
+                  {"id": 12, "type": "multiple", "correct": false, "correctAnswer": "1,2", "userAnswer": "1,3", "question": "I think ... taxi driver.", "answers": [{"id": 120, "label":"she is a", "value": "1"}, {"id": 121, "label":"her job is a", "value": "2"}, {"id": 122, "label":"she is", "value": "3"}]},
+                  {"id": 13, "type": "open","maxPoints": 10, "userPoints": 6, "userAnswer": "moja odpowiedź na to pytanie", "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
+                  {"id": 14, "type": "fill-gaps", "correct": false, "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap","userAnswer": "zdrowie", "correctAnswer":["zdrowie"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap","userAnswer": "bardzo", "correctAnswer":["albo nie","albo tak"]}]},
+                  {"id": 15, "type": "fill-gaps-list", "correct": true, "answers":["zdrowie", "krewny"], "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap","userAnswer": "zdrowie", "correctAnswer":["zdrowie"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap","userAnswer": "bardzo", "correctAnswer":["bardzo","albo nie"]}]},
+                  {"id": 16, "type": "fill-gaps-predefined", "correct": true, "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap","userAnswer": "zdrowie", "correctAnswer":["zdrowie"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap","userAnswer": "bardzo", "correctAnswer":["bardzo","albo nie"]}]}
+                  ]}
+              ]
+            }
+          }';
+    break;
+    case "getLoginHistory":
+        echo '[
+          {"id": 1, "date": "2016-12-23 18:00:00", "ip": "83.28.218.147", "logSuccessfully": true},
+          {"id": 2, "date": "2016-12-23 18:00:00", "ip": "83.28.218.147", "logSuccessfully": false},
+          {"id": 3, "date": "2016-12-23 18:00:00", "ip": "83.28.218.147", "logSuccessfully": true}
+        ]';
+    break;
+    case "getElibraryList":
+        echo '[
+          {"id": 1, "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 10},
+          {"id": 2, "title": "Pan Tadeusz", "author": "Adam Mickiewicz", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 20},
+          {"id": 3, "title": "Inferno", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 30},
+          {"id": 4, "title": "English in Matrix", "author": "John Matrix", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 20},
+          {"id": 5, "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 5},
+          {"id": 6, "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 12}
+        ]';
     break;
 
 }
