@@ -206,13 +206,28 @@ switch ($_GET["q"]) {
     break;
     case "getElibraryList":
         echo '[
-          {"id": 1, "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 10},
-          {"id": 2, "title": "Pan Tadeusz", "author": "Adam Mickiewicz", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 20},
-          {"id": 3, "title": "Inferno", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 30},
-          {"id": 4, "title": "English in Matrix", "author": "John Matrix", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 20},
-          {"id": 5, "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 5},
-          {"id": 6, "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 12}
+          {"id": 1, "status": "available", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 10},
+          {"id": 2, "status": "borrowed", "dateFrom": "2017-01-15 18:00:00", "dateReturn": "2017-01-25 18:00:00", "title": "Pan Tadeusz", "author": "Adam Mickiewicz", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 20},
+          {"id": 3, "status": "available", "title": "Inferno", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 1},
+          {"id": 4, "status": "reserved", "dateFrom": "2017-01-15 18:00:00", "dateTo": "2017-01-25 18:00:00", "title": "English in Matrix", "author": "John Matrix", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 20},
+          {"id": 5, "status": "available", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 3},
+          {"id": 6, "status": "borrowed", "dateFrom": "2017-01-15 18:00:00", "dateReturn": "2017-01-25 18:00:00", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 12}
         ]';
+    break;
+    case "getElibraryDetails":
+        echo '{
+          "id": 1,
+          "status": "available",
+          "title": "English in Matrix",
+          "author": "John Smith",
+          "deposit": "5PLN",
+          "bookingPeriod": "10",
+          "department": "WAW",
+          "availableUnits": 10
+        }';
+    break;
+    case "reserveElibraryItem":
+      echo '200'
     break;
 
 }
