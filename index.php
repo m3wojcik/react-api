@@ -227,7 +227,6 @@ switch ($_GET["q"]) {
         }';
     break;
     case "reserveElibraryItem":
-      echo '200'
+      echo '200';
     break;
-
 }
