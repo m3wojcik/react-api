@@ -1,11 +1,13 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 sleep(1);
 switch ($_GET["q"]) {
   case "getAppData":
       echo '{
           "user": {"login": "jkowalski", "firstName": "Jan", "lastName": "Muszynski", "avatar": "https://unsplash.it/48/48?random&time=1484309785649"},
-          "notifications": {"unreadMessages": 1, "newTest": 1, "newFiles": 1}
+          "locales": {"currency": "PLN","currencyCode": "zł", "language": "PL"},
+          "notifications": {"newInMarks": 1, "newInAttendance": 2, "newInMessages": 3, "newInFiles": 4, "newInTests": 5, "newInElibrary": 6, "newInSurveys": 7, "newInPayments": 8 }
         }';
   break;
   case "getUserData":
@@ -34,6 +36,24 @@ switch ($_GET["q"]) {
           {"id": 2, "first": "Joby",  "last": "Wasilenko",  "age": 27,  "description": "Joby loves the Packers, cheese, and turtles.",  "thumbnail": "http://i.imgur.com/52xRlm8.png"},
           {"id": 3,  "first": "Madison",  "last": "Williams",  "age": 24,  "description": "Madi likes her dog but it is really annoying.",  "thumbnail": "http://i.imgur.com/4EMtxHB.png"}
         ]';
+    break;
+    case "getClassesDashboard":
+        echo '[
+            {"id": 1,
+               "name": "Angielski",
+               "group": "Angielski 3/2016",
+               "room": "Manchester",
+               "date": "2017-01-25 14:00:00",
+               "length": 45,
+               "teacher": "Lektorski Jan",
+               "active" : true,
+               "status" : {"name": "zajęcia odwołano", "color":"#d9534f"},
+               "details": []
+             },
+            {"id": 2, "name": "Francuski", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2017-01-28 14:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"},{"name":"dodano pliki","class":"label-info"}]},
+            {"id": 3, "name": "Angielski", "group": "Angielski 3/2016", "room": "Manchester", "date": "2017-02-01 14:00:00", "length": 45, "weekday": "Friday", "teacher": "Lektorski Jan", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+            {"id": 4, "name": "Francuski", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2017-02-04 16:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]}
+          ]';
     break;
     case "getUpcomingClasses":
         echo '[
@@ -149,7 +169,7 @@ switch ($_GET["q"]) {
             "shareDate": "2016-12-23 18:00:00",
             "checkingTeacher": "Lektorski Jan",
             "duration": 3600,
-            "timeLeft": 15,
+            "timeLeft": 105,
             "result": null,
             "completed": false,
             "rated": false,
@@ -163,7 +183,9 @@ switch ($_GET["q"]) {
                   {"id": 13, "type": "open","maxPoints": 10, "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
                   {"id": 14, "type": "fill-gaps", "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap"},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap"}]},
                   {"id": 15, "type": "fill-gaps-list", "answers":["zdrowie", "krewny"], "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap"},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap"}]},
-                  {"id": 16, "type": "fill-gaps-predefined", "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap", "answers":["zdrowie", "choroba"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap", "answers":["krewny", "krewna","obcy"]}]}
+                  {"id": 16, "type": "fill-gaps-predefined", "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap", "answers":["zdrowie", "choroba"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap", "answers":["krewny", "krewna","obcy"]}]},
+                  {"id": 17, "type": "youtube", "url": "https://www.youtube.com/embed/H7uTdb638Hg"},
+                    {"id": 18, "type": "files", "files":[{"id":9, "name":"wakacje", "type":"file", "extension":"jpg", "size": "300KB", "src": "https://i.ytimg.com/vi/cNycdfFEgBc/maxresdefault.jpg" },{"id":10, "name":"grafik", "type":"file", "extension":"pdf", "size": "450KB"},{"id":11, "name":"grafik", "type":"file", "extension":"doc", "size": "450KB"},{"id":12, "name":"grafik", "type":"file", "extension":"docx", "size": "450KB"},{"id":13, "name":"grafik", "type":"file", "extension":"xls", "size": "450KB"},{"id":14, "name":"grafik", "type":"file", "extension":"ppt", "size": "450KB"}]}
                   ]}
               ]
             }
@@ -186,12 +208,14 @@ switch ($_GET["q"]) {
               "pages": [
                 {"blocks":[
                   {"id": 10, "type": "block-of-text", "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
-                  {"id": 11, "type": "single", "correct": true, "correctAnswer": "110", "userAnswer": "110", "question": "Did you ... anywhere interesting last weekend?", "answers": [{"id": 110, "label":"go", "value": "110"}, {"id": 111, "label":"going", "value": "111"}, {"id": 112, "label":"was", "value": "112"}]},
+                  {"id": 11, "type": "single", "correct": true, "correctAnswer": "111", "userAnswer": "111", "question": "Did you ... anywhere interesting last weekend?", "answers": [{"id": 110, "label":"go", "value": "110"}, {"id": 111, "label":"going", "value": "111"}, {"id": 112, "label":"was", "value": "112"}]},
                   {"id": 12, "type": "multiple", "correct": false, "correctAnswer": "1,2", "userAnswer": "1,3", "question": "I think ... taxi driver.", "answers": [{"id": 120, "label":"she is a", "value": "1"}, {"id": 121, "label":"her job is a", "value": "2"}, {"id": 122, "label":"she is", "value": "3"}]},
                   {"id": 13, "type": "open","maxPoints": 10, "userPoints": 6, "userAnswer": "moja odpowiedź na to pytanie", "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
                   {"id": 14, "type": "fill-gaps", "correct": false, "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap","userAnswer": "zdrowie", "correctAnswer":["zdrowie"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap","userAnswer": "bardzo", "correctAnswer":["albo nie","albo tak"]}]},
                   {"id": 15, "type": "fill-gaps-list", "correct": true, "answers":["zdrowie", "krewny"], "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap","userAnswer": "zdrowie", "correctAnswer":["zdrowie"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap","userAnswer": "bardzo", "correctAnswer":["bardzo","albo nie"]}]},
-                  {"id": 16, "type": "fill-gaps-predefined", "correct": true, "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap","userAnswer": "zdrowie", "correctAnswer":["zdrowie"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap","userAnswer": "bardzo", "correctAnswer":["bardzo","albo nie"]}]}
+                  {"id": 16, "type": "fill-gaps-predefined", "correct": true, "textArray": [{"type":"text", "value":"Litwo! Ojczyzno moja! Ty jesteś jak"},{"type":"gap","userAnswer": "zdrowie", "correctAnswer":["zdrowie"]},{"type":"text", "value":"Nazywał się z opieki panicz bogaty,"},{"type":"gap","userAnswer": "bardzo", "correctAnswer":["bardzo","albo nie"]}]},
+                  {"id": 17, "type": "youtube", "url": "https://www.youtube.com/embed/H7uTdb638Hg"},
+                  {"id": 18, "type": "files", "files":[{"id":9, "name":"wakacje", "type":"file", "extension":"jpg", "size": "300KB", "src": "https://i.ytimg.com/vi/cNycdfFEgBc/maxresdefault.jpg" },{"id":10, "name":"grafik", "type":"file", "extension":"pdf", "size": "450KB"},{"id":11, "name":"grafik", "type":"file", "extension":"doc", "size": "450KB"},{"id":12, "name":"grafik", "type":"file", "extension":"docx", "size": "450KB"},{"id":13, "name":"grafik", "type":"file", "extension":"xls", "size": "450KB"},{"id":14, "name":"grafik", "type":"file", "extension":"ppt", "size": "450KB"}]}
                   ]}
               ]
             }
@@ -206,12 +230,12 @@ switch ($_GET["q"]) {
     break;
     case "getElibraryList":
         echo '[
-          {"id": 1, "status": "available", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 10},
-          {"id": 2, "status": "borrowed", "dateFrom": "2017-01-15 18:00:00", "dateReturn": "2017-01-25 18:00:00", "title": "Pan Tadeusz", "author": "Adam Mickiewicz", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 20},
-          {"id": 3, "status": "available", "title": "Inferno", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 1},
-          {"id": 4, "status": "reserved", "dateFrom": "2017-01-15 18:00:00", "dateTo": "2017-01-25 18:00:00", "title": "English in Matrix", "author": "John Matrix", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 20},
-          {"id": 5, "status": "available", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 3},
-          {"id": 6, "status": "borrowed", "dateFrom": "2017-01-15 18:00:00", "dateReturn": "2017-01-25 18:00:00", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": "10", "department": "WAW", "availableUnits": 12}
+          {"id": 1, "status": "available", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 10},
+          {"id": 2, "status": "borrowed", "dateFrom": "2017-01-15 18:00:00", "dateReturn": "2017-01-25 18:00:00", "title": "Pan Tadeusz", "author": "Adam Mickiewicz", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 20},
+          {"id": 3, "status": "available", "title": "Inferno", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 1},
+          {"id": 4, "status": "reserved", "dateFrom": "2017-01-15 18:00:00", "dateTo": "2017-01-25 18:00:00", "title": "Anioły i demony", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 20},
+          {"id": 5, "status": "available", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 3},
+          {"id": 6, "status": "borrowed", "dateFrom": "2017-01-15 18:00:00", "dateReturn": "2017-01-25 18:00:00", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 12}
         ]';
     break;
     case "getElibraryDetails":
@@ -221,12 +245,81 @@ switch ($_GET["q"]) {
           "title": "English in Matrix",
           "author": "John Smith",
           "deposit": "5PLN",
-          "bookingPeriod": "10",
+          "bookingPeriod": 10,
           "department": "WAW",
           "availableUnits": 10
         }';
     break;
     case "reserveElibraryItem":
       echo '200';
+    break;
+    case "cancelReserveElibraryItem":
+      echo '200';
+    break;
+    case "getSurveys":
+        echo '[
+          {"id": 1, "name": "Satisfaction survey", "sharedBy": "Lektorski Jan", "shareDate": "2016-12-23 18:00:00", "completed": false},
+          {"id": 2, "name": "Test survey", "sharedBy": "Lektorski Jan", "shareDate": "2017-01-23 18:00:00", "completed": true}
+        ]';
+    break;
+    case "getSurvey":
+        echo '{
+          "id": 1,
+          "name": "Satisfaction survey",
+          "sharedBy": "Lektorski Jan",
+          "shareDate": "2016-12-23 18:00:00",
+          "completed": false,
+          "surveyData": {
+            "pages": [
+                {"blocks":[
+                  {"id": 10, "type": "block-of-text", "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
+                  {"id": 9, "type": "range", "question": "Ocen w sklali od 5 do 10", "minValue": 5, "maxValue": 10},
+                  {"id": 11, "type": "single", "question": "Did you ... anywhere interesting last weekend?", "answers": [{"id": 110, "label":"go", "value": "110"}, {"id": 111, "label":"going", "value": "111"}, {"id": 112, "label":"was", "value": "112"}]},
+                  {"id": 12, "type": "multiple", "question": "I think ... taxi driver.", "answers": [{"id": 120, "label":"she is a", "value": "120"}, {"id": 121, "label":"her job is a", "value": "121"}, {"id": 122, "label":"she is", "value": "122"}]},
+                  {"id": 13, "type": "open","maxPoints": 10, "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
+                  {"id": 18, "type": "files", "files":[{"id":9, "name":"wakacje", "type":"file", "extension":"jpg", "size": "300KB", "src": "https://i.ytimg.com/vi/cNycdfFEgBc/maxresdefault.jpg" },{"id":10, "name":"grafik", "type":"file", "extension":"pdf", "size": "450KB"},{"id":11, "name":"grafik", "type":"file", "extension":"doc", "size": "450KB"},{"id":12, "name":"grafik", "type":"file", "extension":"docx", "size": "450KB"},{"id":13, "name":"grafik", "type":"file", "extension":"xls", "size": "450KB"},{"id":14, "name":"grafik", "type":"file", "extension":"ppt", "size": "450KB"}]}
+                  ]}
+              ]
+            }
+          }';
+    break;
+    case "viewSurvey":
+        echo '{
+          "id": 1,
+          "name": "Satisfaction survey",
+          "sharedBy": "Lektorski Jan",
+          "shareDate": "2016-12-23 18:00:00",
+          "completed": true,
+          "surveyData": {
+            "pages": [
+                {"blocks":[
+                  {"id": 10, "type": "block-of-text", "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
+                  {"id": 9, "type": "range", "question": "Ocen w sklali od 4 do 10", "minValue": 4, "maxValue": 10, "answer": 7},
+                  {"id": 11, "type": "single", "userAnswer": "111", "question": "Did you ... anywhere interesting last weekend?", "answers": [{"id": 110, "label":"go", "value": "110"}, {"id": 111, "label":"going", "value": "111"}, {"id": 112, "label":"was", "value": "112"}]},
+                  {"id": 12, "type": "multiple",  "userAnswer": "1,3", "question": "I think ... taxi driver.", "answers": [{"id": 120, "label":"she is a", "value": "1"}, {"id": 121, "label":"her job is a", "value": "2"}, {"id": 122, "label":"she is", "value": "3"}]},
+                  {"id": 13, "type": "open", "userAnswer": "moja odpowiedź na to pytanie", "text": "The best way to use these icons on the web is with our icon web font. Its lightweight, easy to use, and hosted by Google"},
+                  {"id": 18, "type": "files", "files":[{"id":9, "name":"wakacje", "type":"file", "extension":"jpg", "size": "300KB", "src": "https://i.ytimg.com/vi/cNycdfFEgBc/maxresdefault.jpg" },{"id":10, "name":"grafik", "type":"file", "extension":"pdf", "size": "450KB"},{"id":11, "name":"grafik", "type":"file", "extension":"doc", "size": "450KB"},{"id":12, "name":"grafik", "type":"file", "extension":"docx", "size": "450KB"},{"id":13, "name":"grafik", "type":"file", "extension":"xls", "size": "450KB"},{"id":14, "name":"grafik", "type":"file", "extension":"ppt", "size": "450KB"}]}
+                  ]}
+              ]
+            }
+          }';
+    break;
+    case "getPayments":
+    echo '{
+      "amountPaid": "400",
+      "totalAmount": "1000",
+      "groups":[
+        {
+          "id":3,
+          "name": "Grupa angielskiego",
+          "installments":[
+            {"id":8, "status": "paid","paymentDate": "2016-12-23 18:00:00", "dateOfPayment": "2016-12-25 18:00:00", "amountToPay": "250", "amountPaid": "250" },
+            {"id":9, "status": "partlyPaid","paymentDate": "2016-12-23 18:00:00", "dateOfPayment": "2016-12-25 18:00:00", "amountToPay": "250", "amountPaid": "150", "leftToPay": "100" },
+            {"id":10, "status": "notPaid","paymentDate": "2017-01-25 18:00:00", "amountToPay": "250"},
+            {"id":11, "status": "notPaid","paymentDate": "2016-02-25 18:00:00", "amountToPay": "250"}
+          ]
+        }
+      ]
+    }';
     break;
 }
