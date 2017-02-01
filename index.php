@@ -20,24 +20,7 @@ switch ($_GET["q"]) {
         "avatar": "https://unsplash.it/192/192?random&time=1484309785649"
       }';
   break;
-    case "getTableData":
-        echo '[
-          {"category": "Sporting Goods", "price": "$49.99", "stocked": true, "name": "Football"},
-          {"category": "Sporting Goods", "price": "$9.99", "stocked": true, "name": "Baseball"},
-          {"category": "Sporting Goods", "price": "$29.99", "stocked": false, "name": "Basketball"},
-          {"category": "Electronics", "price": "$99.99", "stocked": true, "name": "iPod Touch"},
-          {"category": "Electronics", "price": "$399.99", "stocked": false, "name": "iPhone 5"},
-          {"category": "Electronics", "price": "$199.99", "stocked": true, "name": "Nexus 7"}
-        ]';
-    break;
-    case "getUsers":
-        echo '[
-          {"id": 1, "first": "Bucky", "last": "Roberts", "age": 71, "description": "Bucky is a React developer and YouTuber", "thumbnail": "http://i.imgur.com/7yUvePI.jpg" },
-          {"id": 2, "first": "Joby",  "last": "Wasilenko",  "age": 27,  "description": "Joby loves the Packers, cheese, and turtles.",  "thumbnail": "http://i.imgur.com/52xRlm8.png"},
-          {"id": 3,  "first": "Madison",  "last": "Williams",  "age": 24,  "description": "Madi likes her dog but it is really annoying.",  "thumbnail": "http://i.imgur.com/4EMtxHB.png"}
-        ]';
-    break;
-    case "getClassesDashboard":
+  case "getClassesDashboard":
         echo '[
             {"id": 1,
                "name": "Angielski",
@@ -50,10 +33,62 @@ switch ($_GET["q"]) {
                "status" : {"name": "zajęcia odwołano", "color":"#d9534f"},
                "details": []
              },
-            {"id": 2, "name": "Francuski", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2017-01-28 14:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"},{"name":"dodano pliki","class":"label-info"}]},
+            {"id": 2, "name": "Francuski1", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2017-01-28 14:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"},{"name":"dodano pliki","class":"label-info"}]},
             {"id": 3, "name": "Angielski", "group": "Angielski 3/2016", "room": "Manchester", "date": "2017-02-01 14:00:00", "length": 45, "weekday": "Friday", "teacher": "Lektorski Jan", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
-            {"id": 4, "name": "Francuski", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2017-02-04 16:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]}
+            {"id": 4, "name": "Francuski", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2016-02-04 16:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]}
           ]';
+    break;
+    case "getAttendanceDashboard":
+        echo '[
+          {"groupId": 1, "groupName": "Angielski 3/2016", "attendance": "93", "statuses": [{ "name": "Nieobecność", "color": "#fc5c50", "date": "2016-12-13 18:00:00", "function": "absent" }, { "name": "Spoznienie", "color": "#ffb629", "date": "2016-12-23 18:00:00", "function": "present" }, { "name": "Spoznienie", "color": "#ffb629", "date": "2016-12-23 18:00:00", "function": "present" }]}
+        ]';
+    break;
+    case "getMarksDashboard":
+        echo '[
+          {"groupId": 1, "groupName": "Angielski 3/2016", "marks": [{ "name": "test", "value": "60/100", "date": "2016-12-23 18:00:00" }, { "name": "Speaking", "value": "80/100", "date": "2016-12-20 18:00:00" }], "percent": 73 }
+        ]';
+    break;
+    case "getMessagesDashboard":
+        echo '[
+          {"id": 1, "read": false, "subject": "Witaj w naszej szkole!", "senderId": 2, "sender": "Langlion System","date": "2017-01-03 11:00:00"},
+          {"id": 2, "read": false, "subject": "Naganne zachowanie","senderId": 3, "sender": "Bario Malotelli","date": "2016-12-25 18:00:00"}
+        ]';
+    break;
+    case "getTestsDashboard":
+        echo '[
+          {"id": 1, "language": "English", "name": "Placement test", "sharedBy": "Lektorski Jan", "shareDate": "2016-12-23 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": "3600", "result": null, "completed": false, "rated": false, "multipleSolving": true},
+          {"id": 2, "language": "English", "name": "Grammar", "sharedBy": "Lektorski Jan", "shareDate": "2017-01-08 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": null, "result": 80, "completed": false, "rated": true, "multipleSolving": true}
+        ]';
+    break;
+    case "getElibraryDashboard":
+        echo '[
+          {"id": 2, "status": "borrowed", "dateFrom": "2017-01-15 18:00:00", "dateReturn": "2017-01-25 18:00:00", "title": "Pan Tadeusz", "author": "Adam Mickiewicz", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 20},
+          {"id": 4, "status": "reserved", "dateFrom": "2017-01-30 00:00:01", "dateTo": "2017-01-31 18:00:00", "title": "Anioły i demony", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 20},
+          {"id": 6, "status": "borrowed", "dateFrom": "2017-01-30 00:00:01", "dateReturn": "2017-02-03 00:00:01", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 12}
+        ]';
+    break;
+    case "getSurveysDashboard":
+        echo '[
+          {"id": 1, "name": "Satisfaction survey", "sharedBy": "Lektorski Jan", "shareDate": "2016-12-23 18:00:00", "completed": false},
+          {"id": 2, "name": "Test survey", "sharedBy": "Lektorski Jan", "shareDate": "2017-01-23 18:00:00", "completed": false}
+        ]';
+    break;
+    case "getPaymentsDashboard":
+    echo '{
+      "amountPaid": "400",
+      "totalAmount": "1000",
+      "groups":[
+        {
+          "id":3,
+          "name": "Grupa angielskiego",
+          "installments":[
+            {"id":9, "status": "partlyPaid","paymentDate": "2016-12-23 18:00:00", "dateOfPayment": "2016-12-25 18:00:00", "amountToPay": "250", "amountPaid": "150", "leftToPay": "100" },
+            {"id":10, "status": "notPaid","paymentDate": "2017-01-25 18:00:00", "amountToPay": "250"},
+            {"id":11, "status": "notPaid","paymentDate": "2017-02-04 18:00:00", "amountToPay": "250"}
+          ]
+        }
+      ]
+    }';
     break;
     case "getUpcomingClasses":
         echo '[
@@ -233,9 +268,9 @@ switch ($_GET["q"]) {
           {"id": 1, "status": "available", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 10},
           {"id": 2, "status": "borrowed", "dateFrom": "2017-01-15 18:00:00", "dateReturn": "2017-01-25 18:00:00", "title": "Pan Tadeusz", "author": "Adam Mickiewicz", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 20},
           {"id": 3, "status": "available", "title": "Inferno", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 1},
-          {"id": 4, "status": "reserved", "dateFrom": "2017-01-15 18:00:00", "dateTo": "2017-01-25 18:00:00", "title": "Anioły i demony", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 20},
+          {"id": 4, "status": "reserved", "dateFrom": "2017-01-30 00:00:01", "dateTo": "2017-01-31 18:00:00", "title": "Anioły i demony", "author": "Dan Brown", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 20},
           {"id": 5, "status": "available", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 3},
-          {"id": 6, "status": "borrowed", "dateFrom": "2017-01-15 18:00:00", "dateReturn": "2017-01-25 18:00:00", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 12}
+          {"id": 6, "status": "borrowed", "dateFrom": "2017-01-30 00:00:01", "dateReturn": "2017-02-03 00:00:01", "title": "English in Matrix", "author": "John Smith", "deposit": "5PLN", "bookingPeriod": 10, "department": "WAW", "availableUnits": 12}
         ]';
     break;
     case "getElibraryDetails":
@@ -316,10 +351,29 @@ switch ($_GET["q"]) {
             {"id":8, "status": "paid","paymentDate": "2016-12-23 18:00:00", "dateOfPayment": "2016-12-25 18:00:00", "amountToPay": "250", "amountPaid": "250" },
             {"id":9, "status": "partlyPaid","paymentDate": "2016-12-23 18:00:00", "dateOfPayment": "2016-12-25 18:00:00", "amountToPay": "250", "amountPaid": "150", "leftToPay": "100" },
             {"id":10, "status": "notPaid","paymentDate": "2017-01-25 18:00:00", "amountToPay": "250"},
-            {"id":11, "status": "notPaid","paymentDate": "2016-02-25 18:00:00", "amountToPay": "250"}
+            {"id":11, "status": "notPaid","paymentDate": "2017-02-04 18:00:00", "amountToPay": "250"}
           ]
         }
       ]
     }';
     break;
+
+
+    // case "getTableData":
+    //     echo '[
+    //       {"category": "Sporting Goods", "price": "$49.99", "stocked": true, "name": "Football"},
+    //       {"category": "Sporting Goods", "price": "$9.99", "stocked": true, "name": "Baseball"},
+    //       {"category": "Sporting Goods", "price": "$29.99", "stocked": false, "name": "Basketball"},
+    //       {"category": "Electronics", "price": "$99.99", "stocked": true, "name": "iPod Touch"},
+    //       {"category": "Electronics", "price": "$399.99", "stocked": false, "name": "iPhone 5"},
+    //       {"category": "Electronics", "price": "$199.99", "stocked": true, "name": "Nexus 7"}
+    //     ]';
+    // break;
+    // case "getUsers":
+    //     echo '[
+    //       {"id": 1, "first": "Bucky", "last": "Roberts", "age": 71, "description": "Bucky is a React developer and YouTuber", "thumbnail": "http://i.imgur.com/7yUvePI.jpg" },
+    //       {"id": 2, "first": "Joby",  "last": "Wasilenko",  "age": 27,  "description": "Joby loves the Packers, cheese, and turtles.",  "thumbnail": "http://i.imgur.com/52xRlm8.png"},
+    //       {"id": 3,  "first": "Madison",  "last": "Williams",  "age": 24,  "description": "Madi likes her dog but it is really annoying.",  "thumbnail": "http://i.imgur.com/4EMtxHB.png"}
+    //     ]';
+    // break;
 }
