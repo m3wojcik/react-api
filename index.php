@@ -7,7 +7,7 @@ switch ($_GET["q"]) {
       echo '{
           "user": {"login": "jkowalski", "firstName": "Jan", "lastName": "Muszynski", "avatar": "https://unsplash.it/48/48?random&time=1484309785649"},
           "locales": {"currency": "PLN","currencyCode": "zł", "language": "PL"},
-          "notifications": {"newInMarks": 1, "newInAttendance": 2, "newInMessages": 3, "newInFiles": 4, "newInTests": 5, "newInElibrary": 6, "newInSurveys": 7, "newInPayments": 8 }
+          "notifications": {"news": 2, "newInMarks": 1, "newInAttendance": 2, "newInMessages": 3, "newInFiles": 4, "newInTests": 5, "newInElibrary": 6, "newInSurveys": 7, "newInPayments": 8 }
         }';
   break;
   case "getUserData":
@@ -45,7 +45,22 @@ switch ($_GET["q"]) {
     break;
     case "getMarksDashboard":
         echo '[
-          {"groupId": 1, "groupName": "Angielski 3/2016", "marks": [{ "name": "test", "value": "60/100", "date": "2016-12-23 18:00:00" }, { "name": "Speaking", "value": "80/100", "date": "2016-12-20 18:00:00" }], "percent": 73 }
+          {"groupId": 1,
+            "groupName": "Angielski 3/2016",
+            "gradeType": "percent",
+            "marks": [
+              { "columnId":1, "name": "test", "weight": 1, "value": "60", "maxValue": "100", "date": "2016-12-23 18:00:00" },
+              { "columnId":2, "name": "Speaking", "weight": 1, "value": "80", "maxValue": "100", "date": "2016-12-20 18:00:00" }
+            ]
+          },
+          {"groupId": 2,
+            "groupName": "Angielski 1-3",
+            "gradeType": "grades",
+            "marks": [
+              { "columnId":3, "name": "test", "weight": 1, "value": "5.5", "displayValue": "5+", "date": "2016-12-23 18:00:00" },
+              { "columnId":4, "name": "Speaking", "weight": 1, "value": "2.75", "displayValue": "3-", "date": "2016-12-20 18:00:00" }
+            ]
+          }
         ]';
     break;
     case "getMessagesDashboard":
@@ -89,6 +104,12 @@ switch ($_GET["q"]) {
         }
       ]
     }';
+    break;
+    case "getNewsDashboard":
+        echo '[
+          {"id": 1, "title": "Angielski dla dzieci", "date": "2016-12-23 18:00:00", "content": "Angielski dla dzieci Nigdy nie jest za wcześnie by rozpocząć naukę języka. Korzystając z wieloletniego doświadczenia w nauczaniu maluchów sprawimy, by Twoje dziecko już od 3 roku życia przez zabawę poznawało język obcy."},
+          {"id": 2, "title": "Witamy po świętach!", "date": "2017-01-23 18:00:00", "content": "Dodatkowe kursy online. Rozpoczęliśmy już zapisy na dodatkowe kursy online. Z nami szybko nadrobisz wszelkie zaległości. Zobacz naszą ofertę."}
+        ]';
     break;
     case "getUpcomingClasses":
         echo '[
@@ -134,9 +155,57 @@ switch ($_GET["q"]) {
         ]';
     break;
     case "getMarks":
-        echo '[
-          {"groupId": 1, "groupName": "Angielski 3/2016", "marks": [{ "name": "test", "value": "60/100", "date": "2016-12-23 18:00:00" }, { "name": "Speaking", "value": "80/100", "date": "2016-12-20 18:00:00" }], "percent": 73 }
-        ]';
+    echo '[
+      {"groupId": 1,
+        "groupName": "Angielski 3/2016",
+        "gradeType": "percent",
+        "marks": [
+          { "columnId":1, "name": "test", "weight": 1, "value": 60, "maxValue": "100", "date": "2016-12-23 18:00:00" },
+          { "columnId":2, "name": "Speaking", "weight": 2, "value": 80, "maxValue": "100", "date": "2016-12-20 18:00:00" },
+            { "columnId":3, "name": "Speaking", "weight": 1, "value": 30, "maxValue": "100", "date": "2016-12-10 18:00:00" }
+        ]
+      },
+      {"groupId": 2,
+        "groupName": "Angielski 1-3",
+        "gradeType": "grades",
+        "marks": [
+          { "columnId":3, "name": "test", "weight": 1, "value": 5.5, "displayValue": "5+", "date": "2016-12-23 18:00:00" },
+          { "columnId":4, "name": "Speaking", "weight": 1, "value": 2.75, "displayValue": "3-", "date": "2016-12-20 18:00:00" }
+        ]
+      }
+    ]';
+    break;
+    case "getMarksClassByColumn":
+      if($_GET["id"] == 1){
+          echo '{
+            "columnId": 1,
+            "name": "test",
+            "gradeType": "percent",
+            "marks": [{ "value": "40", "weight": 1},{ "value": 60, "user": true , "weight": 1},{ "value": 65, "weight": 1},{ "value": 75, "weight": 1},{ "value": 80, "weight": 1},{ "value": 85, "weight": 1}]
+          }';
+        }else if($_GET["id"] == 3){
+            echo '{
+              "columnId": 3,
+              "name": "test",
+              "gradeType": "grades",
+              "marks": [{ "value": 2.5, "displayValue": "2+" , "weight": 1},{ "value": 3.5, "displayValue": "3+", "user": true, "weight": 1 },{ "value": 4, "displayValue": "4", "weight": 1 },{ "value": 5.5, "displayValue": "5+", "weight": 1 },{ "value": 5.5, "displayValue": "5+", "weight": 1 },{ "value": 5.5, "displayValue": "5+", "weight": 1 },{ "value": 6, "displayValue": "6", "weight": 1 }]
+            }';
+        }
+    break;
+    case "getMarksClassAverage":
+      if($_GET["id"] == 1){
+          echo '{
+            "groupId": 1,
+            "gradeType": "percent",
+            "averages": [{ "value": "40", "weight": 1},{ "value": 60, "user": true , "weight": 1},{ "value": 65, "weight": 1},{ "value": 75, "weight": 1},{ "value": 80, "weight": 1},{ "value": 85, "weight": 1}]
+          }';
+        }else if($_GET["id"] == 2){
+            echo '{
+              "groupId": 2,
+              "gradeType": "grades",
+              "averages": [{ "value": 2.5, "weight": 1},{ "value": 3.5, "user": true, "weight": 1 },{ "value": 4, "weight": 1 },{ "value": 5.5, "weight": 1 },{ "value": 5.5, "weight": 1 },{ "value": 5.5, "weight": 1 },{ "value": 6, "weight": 1 }]
+            }';
+        }
     break;
     case "getAttendance":
         echo '[
