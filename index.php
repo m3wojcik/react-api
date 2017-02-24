@@ -7,7 +7,8 @@ switch ($_GET["q"]) {
       echo '{
           "user": {"login": "jkowalski", "firstName": "Jan", "lastName": "Muszynski", "avatar": "https://unsplash.it/48/48?random&time=1484309785649"},
           "locales": {"currency": "PLN","currencyCode": "zł", "language": "PL"},
-          "notifications": {"news": 2, "newInMarks": 1, "newInAttendance": 2, "newInMessages": 3, "newInFiles": 4, "newInTests": 5, "newInElibrary": 6, "newInSurveys": 7, "newInPayments": 8 }
+          "notifications": {"news": 2, "newInMarks": 1, "newInAttendance": 2, "newInMessages": 3, "newInFiles": 4, "newInTests": 5, "newInElibrary": 6, "newInSurveys": 7, "newInPayments": 8 },
+          "groups":[{"id":1, "name": "Angielski 3/2016", "dateFrom": "2017-01-25 14:00:00" , "dateTo": "2017-03-25 14:00:00"}, {"id":2, "name": "Francuski 4/2016", "dateFrom": "2017-02-25 14:00:00" , "dateTo": "2017-05-25 14:00:00"}]
         }';
   break;
   case "getUserData":
@@ -33,9 +34,9 @@ switch ($_GET["q"]) {
                "status" : {"name": "zajęcia odwołano", "color":"#d9534f"},
                "details": []
              },
-            {"id": 2, "name": "Francuski1", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2017-01-28 14:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"},{"name":"dodano pliki","class":"label-info"}]},
-            {"id": 3, "name": "Angielski", "group": "Angielski 3/2016", "room": "Manchester", "date": "2017-02-01 14:00:00", "length": 45, "weekday": "Friday", "teacher": "Lektorski Jan", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
-            {"id": 4, "name": "Francuski", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2016-02-04 16:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]}
+            {"id": 2, "name": "Francuski1", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2017-01-28 14:00:00", "length": 45, "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"},{"name":"dodano pliki","class":"label-info"}]},
+            {"id": 3, "name": "Angielski", "group": "Angielski 3/2016", "room": "Manchester", "date": "2017-02-01 14:00:00", "length": 45, "teacher": "Lektorski Jan", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+            {"id": 4, "name": "Francuski", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2016-02-04 16:00:00", "length": 45, "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]}
           ]';
     break;
     case "getAttendanceDashboard":
@@ -111,24 +112,37 @@ switch ($_GET["q"]) {
           {"id": 2, "title": "Witamy po świętach!", "date": "2017-01-23 18:00:00", "content": "Dodatkowe kursy online. Rozpoczęliśmy już zapisy na dodatkowe kursy online. Z nami szybko nadrobisz wszelkie zaległości. Zobacz naszą ofertę."}
         ]';
     break;
-    case "getUpcomingClasses":
-        echo '[
-            {"id": 1,
-               "name": "Angielski",
-               "group": "Angielski 3/2016",
-               "room": "Manchester",
-               "date": "2016-12-12 08:00:00",
-               "length": 45,
-               "weekday": "Friday",
-               "teacher": "Lektorski Jan",
-               "active" : false,
-               "status" : {"name": "zajęcia odwołano", "color":"#d9534f"},
-               "details": []
-             },
-            {"id": 2, "name": "Francuski", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2016-12-23 18:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"},{"name":"dodano pliki","class":"label-info"}]},
-            {"id": 3, "name": "Angielski", "group": "Angielski 3/2016", "room": "Manchester", "date": "2016-12-24 18:00:00", "length": 45, "weekday": "Friday", "teacher": "Lektorski Jan", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
-            {"id": 4, "name": "Francuski", "group": "Francuski 4/2016", "room": "Chelsea", "date": "2016-02-25 16:00:00", "length": 45, "weekday": "Monday", "teacher": "Pier Karde", "active" : true, "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]}
-          ]';
+    case "getClasses":
+    echo '[
+        {"id": 1,
+           "name": "Angielski",
+           "room": "Manchester",
+           "date": "2016-11-24 14:00:00",
+           "length": 45,
+           "teacher": "Lektorski Jan",
+           "status" : {"name": "zajęcia odwołano", "color":"#d9534f"},
+           "details": []
+         },
+         {"id": 2, "name": "Angielski", "room": "Manchester", "date": "2016-12-01 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 3, "name": "Angielski", "room": "Manchester", "date": "2016-12-08 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 4, "name": "Angielski", "room": "Manchester", "date": "2016-12-15 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 5, "name": "Angielski", "room": "Manchester", "date": "2016-12-22 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 6, "name": "Angielski", "room": "Manchester", "date": "2017-01-07 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 7, "name": "Angielski", "room": "Manchester", "date": "2017-01-14 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 8, "name": "Angielski", "room": "Manchester", "date": "2017-01-21 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 9, "name": "Angielski", "room": "Manchester", "date": "2017-01-28 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 10, "name": "Angielski", "room": "Manchester", "date": "2017-02-12 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 11, "name": "Angielski", "room": "Manchester", "date": "2017-02-13 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 12, "name": "Angielski", "room": "Manchester", "date": "2017-02-18 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 20, "name": "Angielski", "room": "Manchester", "date": "2017-02-26 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 13, "name": "Angielski", "room": "Manchester", "date": "2017-03-03 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 14, "name": "Angielski", "room": "Manchester", "date": "2017-03-10 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 15, "name": "Angielski", "room": "Manchester", "date": "2017-03-17 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 16, "name": "Angielski", "room": "Manchester", "date": "2017-03-25 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 17, "name": "Angielski", "room": "Manchester", "date": "2017-04-03 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 18, "name": "Angielski", "room": "Manchester", "date": "2017-04-10 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 19, "name": "Angielski", "room": "Manchester", "date": "2017-04-17 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]}
+      ]';
     break;
     case "getClassDetails":
         echo '{"id": 3,
@@ -209,7 +223,11 @@ switch ($_GET["q"]) {
     break;
     case "getAttendance":
         echo '[
-          {"groupId": 1, "groupName": "Angielski 3/2016", "attendance": "93", "statuses": [{ "name": "Nieobecność", "color": "#fc5c50", "date": "2016-12-13 18:00:00", "function": "absent" }, { "name": "Spoznienie", "color": "#ffb629", "date": "2016-12-23 18:00:00", "function": "present" }]}
+          {"groupId": 1,
+            "groupName": "Angielski 3/2016",
+            "attendance": 93,
+            "statuses": [{ "name": "Nieobecność", "color": "#fc5c50", "date": "2017-02-13 18:00:00", "function": "absent" },{ "name": "Złe zachowanie", "color": "#F2711C", "date": "2017-02-13 18:00:00", "function": "absent" }, { "name": "Spoznienie", "color": "#ffb629", "date": "2017-01-23 18:00:00", "function": "present" }]
+          }
         ]';
     break;
     case "getInboxMessages":
