@@ -135,7 +135,7 @@ switch ($_GET["q"]) {
          {"id": 11, "name": "Angielski", "room": "Manchester", "date": "2017-02-13 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
          {"id": 12, "name": "Angielski", "room": "Manchester", "date": "2017-02-18 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
          {"id": 20, "name": "Angielski", "room": "Manchester", "date": "2017-02-26 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
-         {"id": 13, "name": "Angielski", "room": "Manchester", "date": "2017-03-03 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
+         {"id": 13, "name": "Angielski", "room": "Manchester", "date": "2017-02-28 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
          {"id": 14, "name": "Angielski", "room": "Manchester", "date": "2017-03-10 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
          {"id": 15, "name": "Angielski", "room": "Manchester", "date": "2017-03-17 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
          {"id": 16, "name": "Angielski", "room": "Manchester", "date": "2017-03-25 14:00:00", "length": 45, "teacher": "Lektorski Jan", "status":null, "details": [{"name":"uzupełniono","class":"label-success"}]},
