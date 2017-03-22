@@ -174,7 +174,7 @@ switch ($_GET["q"]) {
     break;
     case "getClassLessonObjects":
       if($_GET["id"]%2 == 0){
-        echo '{"classId": 3,
+        echo '{"classId": '.$_GET["id"].',
                "lessonObjects": [
                  {"label":"Temat",
                   "content":"<p>Test z gramatyki</p>"
@@ -185,7 +185,7 @@ switch ($_GET["q"]) {
                ]
              }';
       }else{
-        echo '{"classId": 4,
+        echo '{"classId": '.$_GET["id"].',
                "lessonObjects": [
                  {"label":"Temat",
                   "content": null
@@ -316,6 +316,7 @@ switch ($_GET["q"]) {
     break;
     case "getClassFiles":
       echo '{
+        "classId": '.$_GET["id"].',
         "path":[{"id":0,"name": "folder 0"}],
         "files":[{"id":1, "name":"folder 1", "type":"folder"},{"id":9, "name":"wakacje", "type":"file", "extension":"jpg", "size": "300KB" },{"id":10, "name":"grafik", "type":"file", "extension":"pdf", "size": "450KB"},{"id":11, "name":"grafik", "type":"file", "extension":"doc", "size": "450KB"},{"id":12, "name":"grafik", "type":"file", "extension":"docx", "size": "450KB"},{"id":13, "name":"grafik", "type":"file", "extension":"xls", "size": "450KB"},{"id":14, "name":"grafik", "type":"file", "extension":"ppt", "size": "450KB"}]
       }';
