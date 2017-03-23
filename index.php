@@ -141,7 +141,7 @@ switch ($_GET["q"]) {
     break;
     case "getClassDetails":
       if($_GET["id"]%2 == 0){
-        echo '{"id": 3,
+        echo '{"id": '.$_GET["id"].',
                "name": "Angielski",
                "group": "Angielski 3/2016",
                "room": "Manchester",
@@ -156,11 +156,11 @@ switch ($_GET["q"]) {
                ]
              }';
       }else{
-        echo '{"id": 4,
+        echo '{"id": '.$_GET["id"].',
                "name": "Francuski",
                "group": "Francuski 3/2016",
                "room": "Paris",
-               "date": "2016-11-24 14:00:00",
+               "date": "2016-11-23 14:00:00",
                "length": 45,
                "teacher": "Pier kardę",
                "online" : true,
