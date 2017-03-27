@@ -322,19 +322,16 @@ switch ($_GET["q"]) {
       }';
     break;
     case "getTests":
-
-    case "getTestsDashboard":
-      if($_GET["id"]%2 == 0){
         echo '[
           {"id": 1, "language": "English", "name": "Placement test", "sharedBy": "Lektorski Jan", "shareDate": "2016-12-23 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": "60", "result": null, "completed": false, "rated": false, "multipleSolving": true},
           {"id": 2, "language": "English", "name": "Grammar", "sharedBy": "Lektorski Jan", "shareDate": "2017-01-08 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": null, "result": 80, "completed": true, "rated": true, "multipleSolving": true}
         ]';
-      }else{
-        echo '[
-          {"id": 1, "language": "German", "name": "Nazi grammar test", "sharedBy": "Hans Klos", "shareDate": "2016-12-23 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": "60", "result": null, "completed": false, "rated": false, "multipleSolving": true},
-          {"id": 2, "language": "German", "name": "Grammar", "sharedBy": "Hans Klos", "shareDate": "2017-01-08 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": null, "result": 80, "completed": true, "rated": true, "multipleSolving": true}
-        ]';
-      }
+    break;
+    case "getTestsDashboard":
+      echo '[
+        {"id": 1, "language": "German", "name": "Nazi grammar test", "sharedBy": "Hans Klos", "shareDate": "2016-12-23 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": "60", "result": null, "completed": false, "rated": false, "multipleSolving": true},
+        {"id": 2, "language": "German", "name": "Grammar", "sharedBy": "Hans Klos", "shareDate": "2017-01-08 18:00:00", "checkingTeacher": "Lektorski Jan", "duration": null, "result": 80, "completed": true, "rated": true, "multipleSolving": true}
+      ]';
     break;
     case "getClassTests":
       if($_GET["id"]%2 == 0){
