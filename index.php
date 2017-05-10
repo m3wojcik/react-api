@@ -8,7 +8,7 @@ switch ($_GET["q"]) {
           "user": {"login": "jkowalski", "firstName": "Jan", "lastName": "Muszynski", "avatar": "https://unsplash.it/48/48?random&time=1484309785649"},
           "locales": {"currency": "PLN","currencyCode": "zł", "language": "PL"},
           "notifications": {"news": 2, "newInMarks": 1, "newInAttendance": 2, "newInMessages": 3, "newInFiles": 4, "newInTests": 5, "newInElibrary": 6, "newInSurveys": 7, "newInPayments": 8 },
-          "groups":[{"id":1, "name": "Angielski 3/2016", "dateFrom": "2017-01-25 14:00:00" , "dateTo": "2017-03-25 14:00:00"}, {"id":2, "name": "Francuski 4/2016", "dateFrom": "2017-02-25 14:00:00" , "dateTo": "2017-05-25 14:00:00"}]
+          "groups":[{"id":1, "name": "Angielski 3/2016"}, {"id":2, "name": "Francuski 4/2016"}]
         }';
   break;
   case "getUserData":
@@ -134,9 +134,9 @@ switch ($_GET["q"]) {
          {"id": 14, "name": "Angielski", "room": "Manchester", "date": "2017-03-10 14:00:00", "length": 45, "teacher": "Lektorski Jan", "online": true, "status":null, "details": [{"label":"uzupełniono","class":"label-success"}]},
          {"id": 15, "name": "Angielski", "room": "Manchester", "date": "2017-03-17 14:00:00", "length": 45, "teacher": "Lektorski Jan", "online": true, "status":null, "details": [{"label":"uzupełniono","class":"label-success"}]},
          {"id": 16, "name": "Angielski", "room": "Manchester", "date": "2017-03-25 14:00:00", "length": 45, "teacher": "Lektorski Jan", "online": true, "status":null, "details": [{"label":"uzupełniono","class":"label-success"}]},
-         {"id": 17, "name": "Angielski", "room": "Manchester", "date": "2017-04-03 14:00:00", "length": 45, "teacher": "Lektorski Jan", "online": true, "status":null, "details": [{"label":"uzupełniono","class":"label-success"}]},
-         {"id": 18, "name": "Angielski", "room": "Manchester", "date": "2017-04-10 14:00:00", "length": 45, "teacher": "Lektorski Jan", "online": true, "status":null, "details": [{"label":"uzupełniono","class":"label-success"}]},
-         {"id": 19, "name": "Angielski", "room": "Manchester", "date": "2017-04-17 14:00:00", "length": 45, "teacher": "Lektorski Jan", "online": true, "status":null, "details": [{"label":"uzupełniono","class":"label-success"}]}
+         {"id": 17, "name": "Angielski", "room": "Manchester", "date": "2017-05-03 14:00:00", "length": 45, "teacher": "Lektorski Jan", "online": true, "status":null, "details": [{"label":"uzupełniono","class":"label-success"}]},
+         {"id": 18, "name": "Angielski", "room": "Manchester", "date": "2017-05-10 14:00:00", "length": 45, "teacher": "Lektorski Jan", "online": true, "status":null, "details": [{"label":"uzupełniono","class":"label-success"}]},
+         {"id": 19, "name": "Angielski", "room": "Manchester", "date": "2017-05-17 14:00:00", "length": 45, "teacher": "Lektorski Jan", "online": true, "status":null, "details": [{"label":"uzupełniono","class":"label-success"}]}
       ]';
     break;
     case "getClassDetails":
