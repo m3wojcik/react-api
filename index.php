@@ -296,6 +296,39 @@ switch ($_GET["q"]) {
           "7": { "name": "Wróbel Anna", "id": 7, "isSelected": false}
         }';
     break;
+    case "getAddressBook2":
+        echo '{
+          "label":"School",
+          "contacts": [
+            {
+              "label": "teachers",
+              "contacts": [
+                {"id": 1, "label":"Lektostki Jan"},
+                {"id": 2, "label":"Smith James"}
+              ]
+            },
+            {
+              "label": "Groups",
+              "contacts": [
+                {
+                  "label":"Angielski 3/01",
+                  "contacts": [
+                    {"id": 4, "label":"Kursant Maciej"},
+                    {"id": 5, "label":"Jan Kurnatowski"}
+                  ]
+                },
+                {
+                  "label":"Niemiecki 2/01",
+                  "contacts": [
+                    {"id": 6, "label":"Janina Kowalska"},
+                    {"id": 7, "label":"Adam Małysz"}
+                  ]
+                }
+              ]
+            }
+          ]
+        }';
+    break;
     case "getFiles":
       if(!isset($_GET["id"]) || $_GET["id"] == 0){
           echo '{
