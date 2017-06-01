@@ -297,7 +297,7 @@ switch ($_GET["q"]) {
         }';
     break;
     case "getAddressBook2":
-        echo '{
+        echo '[{
           "label":"School",
           "contacts": [
             {
@@ -327,7 +327,7 @@ switch ($_GET["q"]) {
               ]
             }
           ]
-        }';
+      }]';
     break;
     case "getFiles":
       if(!isset($_GET["id"]) || $_GET["id"] == 0){
