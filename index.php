@@ -297,9 +297,7 @@ switch ($_GET["q"]) {
         }';
     break;
     case "getAddressBook2":
-        echo '{
-          "label":"School",
-          "contacts": [
+        echo '[
             {
               "label": "teachers",
               "contacts": [
@@ -321,13 +319,13 @@ switch ($_GET["q"]) {
                   "label":"Niemiecki 2/01",
                   "contacts": [
                     {"id": 6, "label":"Janina Kowalska"},
-                    {"id": 7, "label":"Adam Małysz"}
+                    {"id": 7, "label":"Adam Małysz"},
+                    {"id": 8, "label":"Iza Małysz"}
                   ]
                 }
-              ]
-            }
+
           ]
-        }';
+        }]';
     break;
     case "getFiles":
       if(!isset($_GET["id"]) || $_GET["id"] == 0){
