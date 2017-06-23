@@ -297,7 +297,9 @@ switch ($_GET["q"]) {
         }';
     break;
     case "getAddressBook2":
+
         echo '[
+
             {
               "label": "teachers",
               "contacts": [
