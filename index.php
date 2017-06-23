@@ -327,6 +327,9 @@ switch ($_GET["q"]) {
           ]
         }]';
     break;
+    case "sendMessage":
+      print_r( $_GET["params"] );
+    break;
     case "getFiles":
       if(!isset($_GET["id"]) || $_GET["id"] == 0){
           echo '{
