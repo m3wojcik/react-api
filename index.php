@@ -550,6 +550,35 @@ switch ($_GET["q"]) {
       ]
     }';
     break;
+    case "getStudentHistory":
+    echo '{
+      "tests":[
+        {"name":"placement test", "score": "80%"},
+        {"name":"Grammar", "score": "50%"}
+      ],
+      "groups":[
+        {
+          "id":3,
+          "name": "Grupa angielskiego",
+          "startDate":"2016-12-23 18:00:00",
+          "endDate":"2017-12-23 18:00:00",
+          "attendance": "78%",
+          "teachers":[
+            {"id": 1, "name": "Jan Lektosrki"}
+          ],
+          "marks":[
+            {"name": "Vocabulary", "value": 60},
+            {"name": "test", "value": 70}
+          ],
+          "notes":[
+            {"id":8,"date": "2016-12-23 18:00:00", "tag": "Reading", "note": "testowa notatka" },
+            {"id":9,"date": "2016-12-23 18:00:00", "tag": "Reading", "note": "testowa notatka" },
+            {"id":10,"date": "2016-12-23 18:00:00", "tag": "Reading", "note": "testowa notatka" }   
+          ]
+        }
+      ]
+    }';
+    break;
 
 
     // case "getTableData":
