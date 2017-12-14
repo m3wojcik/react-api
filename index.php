@@ -579,6 +579,20 @@ switch ($_GET["q"]) {
       ]
     }';
     break;
+    case "notifications":
+      echo '{
+        "addingSubstitutions": {
+          "system": true,
+          "email": false,
+          "sms": true
+        },
+        "cancellingSubstitutions": {
+          "system": true,
+          "email": false,
+          "sms": true
+        }
+      }';
+    break;
 
 
     // case "getTableData":
