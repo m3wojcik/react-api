@@ -581,16 +581,24 @@ switch ($_GET["q"]) {
     break;
     case "notifications":
       echo '{
-        "addingSubstitutions": {
-          "system": true,
-          "email": false,
-          "sms": true
-        },
-        "cancellingSubstitutions": {
-          "system": true,
-          "email": false,
-          "sms": true
-        }
+		  "notifications":[
+			{
+			  "name": "addingSubstitutions",
+			  "options":[
+				{"name": "system", "value": true},
+				{"name": "email", "value": true},
+				{"name": "sms", "value": false}
+			  ]
+			},
+			{
+			  "name": "cancellingSubstitutions",
+			  "options":[
+				{"name": "system", "value": true},
+				{"name": "email", "value": true},
+				{"name": "sms", "value": false}
+			  ]
+			}
+		  ]
       }';
     break;
 
