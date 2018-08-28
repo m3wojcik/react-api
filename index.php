@@ -550,6 +550,12 @@ switch ($_GET["q"]) {
       ]
     }';
     break;
+	case "getInvoices":
+        echo '[
+          {"id": 1, "Date": "2018-07-20 18:00:00" , "name": "Kurs językowy (Ind Mariusz Wójcik)", "PKWiU": "", "Number": "1", "Unit": "szt", "Net price (PLN)": "400,00", "VAT": "zw", "Net value (PLN)": "400,00", "VAT value(PLN)": "0,00", "Gross value(PLN)": "400,00"},
+          {"id": 2, "Date": "2018-07-18 18:00:00" , "name": "Kurs językowy (Ind Mariusz Wójcik)", "PKWiU": "", "Number": "2", "Unit": "szt", "Net price (PLN)": "600,00", "VAT": "zw", "Net value (PLN)": "600,00", "VAT value(PLN)": "0,00", "Gross value(PLN)": "600,00"}
+        ]';
+    break;
     case "getStudentHistory":
     echo '{
       "tests":[
